@@ -1,5 +1,6 @@
 
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,6 +49,7 @@ const Footer = () => {
               <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Serviços</a></li>
               <li><a href="#benefits" className="text-gray-400 hover:text-white transition-colors">Benefícios</a></li>
               <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contato</a></li>
+              <li><Link to="/politica-de-privacidade" className="text-gray-400 hover:text-white transition-colors">Política de Privacidade</Link></li>
             </ul>
           </div>
           
@@ -63,6 +65,9 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
           <p>&copy; {currentYear} Automações Comerciais. Todos os direitos reservados.</p>
+          <p className="mt-2">
+            <Link to="/politica-de-privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
+          </p>
         </div>
       </div>
     </footer>
