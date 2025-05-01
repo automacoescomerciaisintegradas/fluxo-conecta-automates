@@ -50,6 +50,7 @@ const Footer = () => {
               <li><a href="#benefits" className="text-gray-400 hover:text-white transition-colors">Benefícios</a></li>
               <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contato</a></li>
               <li><Link to="/politica-de-privacidade" className="text-gray-400 hover:text-white transition-colors">Política de Privacidade</Link></li>
+              <li><Link to="/termos-de-uso" className="text-gray-400 hover:text-white transition-colors">Termos de Uso</Link></li>
             </ul>
           </div>
           
@@ -65,8 +66,9 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
           <p>&copy; {currentYear} Automações Comerciais. Todos os direitos reservados.</p>
-          <p className="mt-2">
+          <p className="mt-2 flex justify-center space-x-4">
             <Link to="/politica-de-privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
+            <Link to="/termos-de-uso" className="hover:text-white transition-colors">Termos de Uso</Link>
           </p>
         </div>
       </div>
