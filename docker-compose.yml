@@ -1,0 +1,35 @@
+
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - NODE_ENV=production
+    networks:
+      - automacoes-network
+
+  # Caso necessite de um banco de dados no futuro
+  # db:
+  #   image: postgres:14-alpine
+  #   environment:
+  #     - POSTGRES_PASSWORD=senha_segura
+  #     - POSTGRES_USER=automacoes
+  #     - POSTGRES_DB=automacoes_db
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - automacoes-network
+
+networks:
+  automacoes-network:
+    driver: bridge
+
+# Caso habilite o serviço de banco de dados
+# volumes:
+#   postgres_data:
