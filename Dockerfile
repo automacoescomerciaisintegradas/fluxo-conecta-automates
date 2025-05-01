@@ -1,32 +1,58 @@
 
+# Stage 1: Build the application
 FROM node:20-alpine AS builder
 
-# Define o diretório de trabalho
+# Set working directory
 WORKDIR /app
 
-# Copia os arquivos de configuração do projeto
+# Copy package files and install dependencies
 COPY package.json package-lock.json ./
-
-# Instala as dependências
 RUN npm ci
 
-# Copia os arquivos do projeto
+# Copy source code
 COPY . .
 
-# Compila a aplicação para produção
+# Build the application
 RUN npm run build
 
-# Stage 2: Imagem de produção
+# Stage 2: Production image
 FROM nginx:alpine
 
-# Copia os arquivos compilados da aplicação para o servidor nginx
+# Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copia a configuração personalizada do nginx (se necessário)
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expõe a porta 80
-EXPOSE 80
+# Create nginx.conf if it doesn't exist in the repo
+<lov-write file_path="nginx.conf">
+server {
+    listen 80;
+    server_name _;
+    
+    root /usr/share/nginx/html;
+    index index.html;
 
-# Comando para iniciar o nginx
-CMD ["nginx", "-g", "daemon off;"]
+    # Gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 10240;
+    gzip_proxied expired no-cache no-store private auth;
+    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml;
+    gzip_disable "MSIE [1-6]\.";
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache static assets
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    # Security headers
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+}
