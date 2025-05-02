@@ -18,14 +18,23 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Stage 2: Production image
-FROM nginx:alpine
+# Stage 2: Setup server
+FROM node:20-alpine
+
+# Install serve to run the application
+RUN npm install -g serve
+
+# Set working directory
+WORKDIR /app
 
 # Copy built files from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /app
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Expose port
+EXPOSE 80
 
-# Create nginx.conf if it doesn't exist in the repo
-# Nota: Esta etapa não é necessária pois já temos o arquivo nginx.conf
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 CMD wget -q --spider http://localhost:80 || exit 1
+
+# Command to run the application
+CMD ["serve", "-s", ".", "-l", "80"]
