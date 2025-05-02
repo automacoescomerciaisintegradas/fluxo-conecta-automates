@@ -8,3 +8,4 @@ README.md
 .DS_Store
 dist
 coverage
+# Removi qualquer referência que pudesse excluir o package-lock.json
