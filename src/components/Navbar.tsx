@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <span className="text-2xl font-bold text-automation-blue">Automações</span>
-              <span className="text-2xl font-bold text-gray-800">Comerciais</span>
+              <span className="text-2xl font-bold text-gray-800">Comerciais Integradas</span>
             </a>
           </div>
 

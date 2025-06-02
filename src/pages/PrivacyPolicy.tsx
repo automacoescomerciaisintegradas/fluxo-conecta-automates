@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
@@ -26,7 +25,7 @@ const PrivacyPolicy = () => {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">1. Introdução</h2>
               <p>
-                A Automações Comerciais está comprometida em proteger a privacidade e os dados pessoais dos usuários, em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD), Lei nº 13.709/2018, e demais normas aplicáveis.
+                A Automações Comerciais Integradas está comprometida em proteger a privacidade e os dados pessoais dos usuários, em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD), Lei nº 13.709/2018, e demais normas aplicáveis.
               </p>
               <p>
                 Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos, compartilhamos e protegemos os seus dados pessoais quando você acessa nosso site, utiliza nossos serviços ou interage conosco de qualquer forma.

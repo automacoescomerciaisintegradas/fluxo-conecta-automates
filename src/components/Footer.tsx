@@ -1,4 +1,3 @@
-
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -11,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">
-              <span className="text-automation-blue">Automações</span> Comerciais
+              <span className="text-automation-blue">Automações</span> Comerciais Integradas
             </h3>
             <p className="text-gray-400 mb-6">
               Soluções de automação personalizadas para o seu negócio.
@@ -65,7 +64,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; {currentYear} Automações Comerciais. Todos os direitos reservados.</p>
+          <p>&copy; {currentYear} Automações Comerciais Integradas. Todos os direitos reservados.</p>
           <p className="mt-2 flex justify-center space-x-4">
             <Link to="/politica-de-privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
             <Link to="/termos-de-uso" className="hover:text-white transition-colors">Termos de Uso</Link>

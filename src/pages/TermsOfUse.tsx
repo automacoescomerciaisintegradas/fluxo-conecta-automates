@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
@@ -26,14 +25,14 @@ const TermsOfUse = () => {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">1. Aceitação dos Termos</h2>
               <p>
-                Ao acessar e utilizar o site e os serviços da Automações Comerciais, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concordar com qualquer parte destes termos, não deverá utilizar nosso site ou serviços.
+                Ao acessar e utilizar o site e os serviços da Automações Comerciais Integradas, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concordar com qualquer parte destes termos, não deverá utilizar nosso site ou serviços.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">2. Descrição dos Serviços</h2>
               <p>
-                A Automações Comerciais oferece soluções de automação para empresas, incluindo, mas não se limitando a:
+                A Automações Comerciais Integradas oferece soluções de automação para empresas, incluindo, mas não se limitando a:
               </p>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Desenvolvimento de agentes de contato automatizados;</li>
@@ -62,7 +61,7 @@ const TermsOfUse = () => {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">4. Propriedade Intelectual</h2>
               <p>
-                Todo o conteúdo presente no site da Automações Comerciais, incluindo texto, gráficos, logotipos, ícones, imagens, clipes de áudio, downloads digitais, compilações de dados e software, é propriedade da Automações Comerciais ou de seus fornecedores de conteúdo e está protegido pelas leis brasileiras e internacionais de direitos autorais.
+                Todo o conteúdo presente no site da Automações Comerciais Integradas, incluindo texto, gráficos, logotipos, ícones, imagens, clipes de áudio, downloads digitais, compilações de dados e software, é propriedade da Automações Comerciais Integradas ou de seus fornecedores de conteúdo e está protegido pelas leis brasileiras e internacionais de direitos autorais.
               </p>
               <p>
                 O uso não autorizado de qualquer material do site pode violar leis de direitos autorais, marcas registradas, privacidade e publicidade, e regulamentos e estatutos de comunicações.
@@ -72,10 +71,10 @@ const TermsOfUse = () => {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">5. Limitação de Responsabilidade</h2>
               <p>
-                Os serviços da Automações Comerciais são fornecidos "como estão" e "conforme disponíveis". Não garantimos que os serviços serão ininterruptos, oportunos, seguros ou livres de erros.
+                Os serviços da Automações Comerciais Integradas são fornecidos "como estão" e "conforme disponíveis". Não garantimos que os serviços serão ininterruptos, oportunos, seguros ou livres de erros.
               </p>
               <p>
-                Em nenhum caso a Automações Comerciais será responsável por quaisquer danos diretos, indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, sem limitação, perda de lucros, dados, uso, boa vontade ou outras perdas intangíveis, resultantes do uso ou da incapacidade de usar nossos serviços.
+                Em nenhum caso a Automações Comerciais Integradas será responsável por quaisquer danos diretos, indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, sem limitação, perda de lucros, dados, uso, boa vontade ou outras perdas intangíveis, resultantes do uso ou da incapacidade de usar nossos serviços.
               </p>
             </section>
 
