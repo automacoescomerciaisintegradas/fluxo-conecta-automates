@@ -12,23 +12,23 @@ const Index = () => {
       <Navbar />
       <Hero />
       
-      {/* Gradiente Hero para Services (light-blue para white) */}
-      <div className="h-16 bg-gradient-to-b from-white to-white"></div>
+      {/* Gradiente Hero para Services com efeito mesh */}
+      <div className="h-20 bg-gradient-to-b from-purple-600 via-blue-500 to-blue-50"></div>
       
       <Services />
       
-      {/* Gradiente Services para Benefits (white para automation-gray) */}
-      <div className="h-16 bg-gradient-to-b from-white to-automation-gray"></div>
+      {/* Gradiente Services para Benefits */}
+      <div className="h-20 bg-gradient-to-b from-indigo-50 via-slate-100 to-gray-100"></div>
       
       <Benefits />
       
-      {/* Gradiente Benefits para Contact (automation-gray para white) */}
-      <div className="h-16 bg-gradient-to-b from-automation-gray to-white"></div>
+      {/* Gradiente Benefits para Contact */}
+      <div className="h-20 bg-gradient-to-b from-slate-200 via-white to-blue-50"></div>
       
       <Contact />
       
-      {/* Gradiente Contact para Footer (white para gray-900) */}
-      <div className="h-16 bg-gradient-to-b from-white via-gray-200 to-gray-900"></div>
+      {/* Gradiente Contact para Footer */}
+      <div className="h-20 bg-gradient-to-b from-blue-50 via-slate-200 to-gray-900"></div>
       
       <Footer />
     </div>
