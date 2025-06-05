@@ -11,7 +11,7 @@ const Services = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
       ),
-      gradient: "from-automation-blue to-automation-indigo"
+      gradient: "from-automation-green to-emerald-600"
     },
     {
       title: "Fluxos de N8N",
@@ -31,22 +31,22 @@ const Services = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
         </svg>
       ),
-      gradient: "from-automation-green to-automation-orange"
+      gradient: "from-green-500 to-automation-orange"
     },
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+    <section id="services" className="py-24 bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-automation-blue/10 to-automation-purple/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-automation-green/10 to-automation-purple/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-automation-pink/10 to-automation-orange/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 container-section mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-            Nossos <span className="bg-gradient-to-r from-automation-blue to-automation-purple bg-clip-text text-transparent">Serviços</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-green-900 to-emerald-900 bg-clip-text text-transparent">
+            Nossos <span className="bg-gradient-to-r from-automation-green to-emerald-600 bg-clip-text text-transparent">Serviços</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Oferecemos soluções completas de automação para impulsionar seu negócio, economizar tempo e aumentar a produtividade.

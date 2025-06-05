@@ -15,29 +15,29 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-automation-blue">Automações</span>
+              <span className="text-2xl font-bold text-automation-green">Automações</span>
               <span className="text-2xl font-bold text-gray-800">Comerciais Integradas</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-automation-blue transition-colors duration-200">
+            <a href="#home" className="text-gray-700 hover:text-automation-green transition-colors duration-200">
               Home
             </a>
-            <a href="#services" className="text-gray-700 hover:text-automation-blue transition-colors duration-200">
+            <a href="#services" className="text-gray-700 hover:text-automation-green transition-colors duration-200">
               Serviços
             </a>
-            <a href="#benefits" className="text-gray-700 hover:text-automation-blue transition-colors duration-200">
+            <a href="#benefits" className="text-gray-700 hover:text-automation-green transition-colors duration-200">
               Benefícios
             </a>
-            <a href="#contact" className="text-gray-700 hover:text-automation-blue transition-colors duration-200">
+            <a href="#contact" className="text-gray-700 hover:text-automation-green transition-colors duration-200">
               Contato
             </a>
           </nav>
 
           <div className="hidden md:block">
-            <Button className="bg-automation-blue hover:bg-automation-dark-blue text-white">
+            <Button className="bg-automation-green hover:bg-automation-dark-green text-white">
               Fale Conosco
             </Button>
           </div>
@@ -66,33 +66,33 @@ const Navbar = () => {
             <nav className="flex flex-col space-y-4">
               <a 
                 href="#home" 
-                className="text-gray-700 hover:text-automation-blue transition-colors duration-200"
+                className="text-gray-700 hover:text-automation-green transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </a>
               <a 
                 href="#services" 
-                className="text-gray-700 hover:text-automation-blue transition-colors duration-200"
+                className="text-gray-700 hover:text-automation-green transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Serviços
               </a>
               <a 
                 href="#benefits" 
-                className="text-gray-700 hover:text-automation-blue transition-colors duration-200"
+                className="text-gray-700 hover:text-automation-green transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Benefícios
               </a>
               <a 
                 href="#contact" 
-                className="text-gray-700 hover:text-automation-blue transition-colors duration-200"
+                className="text-gray-700 hover:text-automation-green transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contato
               </a>
-              <Button className="bg-automation-blue hover:bg-automation-dark-blue text-white w-full">
+              <Button className="bg-automation-green hover:bg-automation-dark-green text-white w-full">
                 Fale Conosco
               </Button>
             </nav>

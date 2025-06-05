@@ -1,4 +1,3 @@
-
 import { Phone, Mail, MapPin } from "lucide-react";
 import ContactForm from "./ContactForm";
 
@@ -8,7 +7,7 @@ const Contact = () => {
       <div className="container-section mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Entre em <span className="text-automation-blue">Contato</span>
+            Entre em <span className="text-automation-green">Contato</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Estamos prontos para ajudar a automatizar seus processos comerciais. Preencha o formulário abaixo e entraremos em contato o mais breve possível.
@@ -21,13 +20,13 @@ const Contact = () => {
           </div>
 
           <div className="flex flex-col justify-center animate-fade-in">
-            <div className="bg-automation-light-blue p-8 rounded-lg">
+            <div className="bg-automation-light-green p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-6 text-gray-800">Informações de Contato</h3>
               
               <div className="space-y-6">
                 <div className="flex items-center">
                   <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center mr-4">
-                    <Phone className="h-5 w-5 text-automation-blue" />
+                    <Phone className="h-5 w-5 text-automation-green" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Telefone</p>
@@ -37,7 +36,7 @@ const Contact = () => {
                 
                 <div className="flex items-center">
                   <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center mr-4">
-                    <Mail className="h-5 w-5 text-automation-blue" />
+                    <Mail className="h-5 w-5 text-automation-green" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">E-mail</p>
@@ -47,7 +46,7 @@ const Contact = () => {
                 
                 <div className="flex items-center">
                   <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center mr-4">
-                    <MapPin className="h-5 w-5 text-automation-blue" />
+                    <MapPin className="h-5 w-5 text-automation-green" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Endereço</p>
@@ -56,7 +55,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="mt-8 pt-8 border-t border-blue-200">
+              <div className="mt-8 pt-8 border-t border-green-200">
                 <h4 className="font-semibold mb-4">Horário de atendimento:</h4>
                 <p className="text-gray-700">Segunda a Sexta: 9h às 18h</p>
               </div>

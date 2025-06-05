@@ -63,26 +63,26 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Enhanced color palette inspired by modern designs
-				'automation-blue': '#3b82f6',
-				'automation-dark-blue': '#1e40af',
-				'automation-light-blue': '#dbeafe',
+				// Enhanced color palette with green neon instead of blue
+				'automation-green': '#22c55e',
+				'automation-dark-green': '#16a34a',
+				'automation-light-green': '#dcfce7',
 				'automation-gray': '#f8fafc',
 				'automation-purple': '#8b5cf6',
 				'automation-pink': '#ec4899',
 				'automation-orange': '#f97316',
-				'automation-green': '#10b981',
+				'automation-blue': '#10b981',
 				'automation-indigo': '#6366f1',
-				'gradient-start': '#667eea',
-				'gradient-end': '#764ba2',
+				'gradient-start': '#10b981',
+				'gradient-end': '#059669',
 				'glass-bg': 'rgba(255, 255, 255, 0.1)',
 				'glass-border': 'rgba(255, 255, 255, 0.2)',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'mesh-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-				'hero-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)',
+				'mesh-gradient': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+				'hero-gradient': 'linear-gradient(135deg, #10b981 0%, #059669 25%, #22c55e 50%, #16a34a 75%, #15803d 100%)',
 				'card-gradient': 'linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
 			},
 			borderRadius: {
@@ -137,10 +137,10 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(103, 126, 234, 0.5)'
+						boxShadow: '0 0 20px rgba(34, 197, 94, 0.5)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(103, 126, 234, 0.8)'
+						boxShadow: '0 0 40px rgba(34, 197, 94, 0.8)'
 					}
 				}
 			},

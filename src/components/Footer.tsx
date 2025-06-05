@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">
-              <span className="text-automation-blue">Automações</span> Comerciais Integradas
+              <span className="text-automation-green">Automações</span> Comerciais Integradas
             </h3>
             <p className="text-gray-400 mb-6">
               Soluções de automação personalizadas para o seu negócio.

@@ -40,14 +40,14 @@ const Benefits = () => {
     <section id="benefits" className="py-24 bg-gradient-to-br from-slate-100 via-gray-50 to-slate-200 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-automation-indigo/20 to-automation-purple/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-automation-blue/15 to-automation-green/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-emerald-600/20 to-automation-purple/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-automation-green/15 to-green-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       <div className="relative z-10 container-section mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-            Por que escolher nossas <span className="bg-gradient-to-r from-automation-blue to-automation-purple bg-clip-text text-transparent">Automações</span>?
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-green-900 to-emerald-900 bg-clip-text text-transparent">
+            Por que escolher nossas <span className="bg-gradient-to-r from-automation-green to-emerald-600 bg-clip-text text-transparent">Automações</span>?
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Descubra como nossas soluções de automação podem transformar seu negócio e impulsionar seus resultados.
@@ -66,7 +66,7 @@ const Benefits = () => {
                   {benefit.icon}
                 </div>
                 <div className="flex-1">
-                  <div className="h-8 w-8 rounded-full bg-gradient-to-r from-automation-blue to-automation-purple flex items-center justify-center mb-4">
+                  <div className="h-8 w-8 rounded-full bg-gradient-to-r from-automation-green to-emerald-600 flex items-center justify-center mb-4">
                     <CheckIcon className="h-5 w-5 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-4">{benefit.title}</h3>
@@ -79,8 +79,8 @@ const Benefits = () => {
 
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h3 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
-              Teste nossos <span className="bg-gradient-to-r from-automation-blue to-automation-purple bg-clip-text text-transparent">Fluxos de N8N</span>
+            <h3 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-green-900 bg-clip-text text-transparent">
+              Teste nossos <span className="bg-gradient-to-r from-automation-green to-emerald-600 bg-clip-text text-transparent">Fluxos de N8N</span>
             </h3>
             <p className="text-xl text-gray-600 leading-relaxed">
               Experimente nossa integração com N8N para upload e gerenciamento de arquivos
