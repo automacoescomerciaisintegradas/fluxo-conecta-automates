@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
 import ThemeToggle from "./ThemeToggle";
+import AuthButton from "./AuthButton";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,6 +84,7 @@ const Navbar = () => {
             </a>
             
             <ThemeToggle />
+            <AuthButton />
             
             <Button className={`
               relative overflow-hidden group transition-all duration-300 hover:scale-105
@@ -153,6 +155,7 @@ const Navbar = () => {
               >
                 Contato
               </a>
+              <AuthButton />
               <Button className="bg-automation-green hover:bg-automation-dark-green text-white w-full">
                 Fale Conosco
               </Button>
