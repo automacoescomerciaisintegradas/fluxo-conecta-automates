@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
 import FloatingParticles from "./FloatingParticles";
+import RoboticHand from "./RoboticHand";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -11,6 +12,11 @@ const Hero = () => {
       {/* Dynamic background based on theme */}
       <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-dark-mesh' : 'bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50'}`}>
         <FloatingParticles />
+      </div>
+
+      {/* Robotic Hand Background - positioned on the right side */}
+      <div className="absolute right-0 top-0 w-1/2 h-full">
+        <RoboticHand />
       </div>
 
       {/* Animated background elements */}
