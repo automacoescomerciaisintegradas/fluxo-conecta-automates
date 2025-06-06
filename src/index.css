@@ -190,4 +190,10 @@
     background-size: 400% 400%;
     animation: gradient-shift 15s ease infinite;
   }
+
+  .animate-gradient-shift {
+    background: linear-gradient(-45deg, #22c55e, #3b82f6, #a855f7, #ec4899);
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
 }

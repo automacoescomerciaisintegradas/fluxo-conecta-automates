@@ -1,13 +1,14 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { useToast } from '@/hooks/use-toast';
-import { Upload, CheckCircle, AlertCircle } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import DragDropZone from './DragDropZone';
 import FileCard from './FileCard';
+import FloatingParticles from './FloatingParticles';
 
 interface UploadedFile {
   id: string;
@@ -18,272 +19,178 @@ interface UploadedFile {
 }
 
 const N8NUpload = () => {
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+  const [files, setFiles] = useState<UploadedFile[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const { toast } = useToast();
 
-  const allowedTypes = [
-    'application/pdf',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'application/msword',
-    'application/vnd.ms-excel',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-  ];
-
-  const handleFileSelect = (files: File[]) => {
-    files.forEach(file => {
-      if (!allowedTypes.includes(file.type)) {
-        toast({
-          variant: "destructive",
-          title: (
-            <div className="flex items-center gap-2">
-              <AlertCircle className="w-4 h-4" />
-              Formato não suportado
-            </div>
-          ),
-          description: `O arquivo ${file.name} não é um formato válido. Use PDF, DOCX ou planilhas (XLS, XLSX).`,
-          className: "bg-red-900/50 border-red-500/50 backdrop-blur-xl"
-        });
-        return;
-      }
-      uploadFile(file);
-    });
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files) return;
-    
-    handleFileSelect(Array.from(files));
-    
-    // Reset input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
-
-  const uploadFile = async (file: File) => {
+  const handleFilesSelected = useCallback(async (selectedFiles: File[]) => {
     setUploading(true);
     setUploadProgress(0);
 
     try {
-      const formData = new FormData();
-      formData.append('file', file);
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
+        
+        // Simulate upload progress
+        for (let progress = 0; progress <= 100; progress += 10) {
+          setUploadProgress(progress);
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
 
-      // Simular progresso do upload com efeito mais fluido
-      const progressInterval = setInterval(() => {
-        setUploadProgress(prev => {
-          if (prev >= 90) {
-            clearInterval(progressInterval);
-            return 90;
-          }
-          return prev + Math.random() * 15;
-        });
-      }, 150);
-
-      const response = await fetch('https://n8n.iau2.com.br/webhook/subir-arquivos', {
-        method: 'POST',
-        body: formData,
-      });
-
-      clearInterval(progressInterval);
-      setUploadProgress(100);
-
-      if (response.ok) {
-        const newFile: UploadedFile = {
-          id: Date.now().toString(),
+        const uploadedFile: UploadedFile = {
+          id: Math.random().toString(36).substr(2, 9),
           name: file.name,
           size: file.size,
           type: file.type,
-          uploadedAt: new Date()
+          uploadedAt: new Date(),
         };
 
-        setUploadedFiles(prev => [...prev, newFile]);
-
+        setFiles(prev => [...prev, uploadedFile]);
+        
         toast({
-          title: (
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-400" />
-              Upload concluído com sucesso!
-            </div>
-          ),
-          description: `O arquivo ${file.name} foi enviado com sucesso.`,
-          className: "bg-green-900/50 border-green-500/50 backdrop-blur-xl text-green-100"
+          title: "Upload concluído",
+          description: `${file.name} foi enviado com sucesso!`,
         });
-      } else {
-        throw new Error('Falha no upload');
       }
     } catch (error) {
-      console.error('Erro no upload:', error);
       toast({
+        title: "Erro no upload",
+        description: "Ocorreu um erro ao enviar o arquivo.",
         variant: "destructive",
-        title: (
-          <div className="flex items-center gap-2">
-            <AlertCircle className="w-4 h-4" />
-            Erro no upload
-          </div>
-        ),
-        description: `Não foi possível enviar o arquivo ${file.name}. Tente novamente.`,
-        className: "bg-red-900/50 border-red-500/50 backdrop-blur-xl"
       });
     } finally {
       setUploading(false);
-      setTimeout(() => setUploadProgress(0), 1000);
+      setUploadProgress(0);
     }
-  };
+  }, []);
 
-  const deleteFile = async (fileId: string, fileName: string) => {
-    try {
-      const response = await fetch('https://n8n.iau2.com.br/webhook/deletar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ fileId, fileName }),
-      });
+  const handleFileDelete = useCallback((fileId: string, fileName: string) => {
+    setFiles(prev => prev.filter(file => file.id !== fileId));
+    toast({
+      title: "Arquivo removido",
+      description: `${fileName} foi removido da lista.`,
+    });
+  }, []);
 
-      if (response.ok) {
-        setUploadedFiles(prev => prev.filter(file => file.id !== fileId));
-        toast({
-          title: (
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
-              Arquivo excluído
-            </div>
-          ),
-          description: `O arquivo ${fileName} foi removido com sucesso.`,
-          className: "bg-blue-900/50 border-blue-500/50 backdrop-blur-xl text-blue-100"
-        });
-      } else {
-        throw new Error('Falha na exclusão');
-      }
-    } catch (error) {
-      console.error('Erro ao excluir arquivo:', error);
+  const handleProcessFiles = useCallback(() => {
+    if (files.length === 0) {
       toast({
+        title: "Nenhum arquivo",
+        description: "Adicione arquivos antes de processar.",
         variant: "destructive",
-        title: (
-          <div className="flex items-center gap-2">
-            <AlertCircle className="w-4 h-4" />
-            Erro ao excluir
-          </div>
-        ),
-        description: `Não foi possível excluir o arquivo ${fileName}. Tente novamente.`,
-        className: "bg-red-900/50 border-red-500/50 backdrop-blur-xl"
       });
+      return;
     }
-  };
+
+    // Simulate processing
+    setUploading(true);
+    setTimeout(() => {
+      setUploading(false);
+      toast({
+        title: "Processamento concluído",
+        description: `${files.length} arquivo(s) processado(s) com sucesso!`,
+      });
+    }, 3000);
+  }, [files.length]);
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-neon-green to-neon-blue flex items-center justify-center">
-            <Upload className="w-5 h-5 text-white" />
-          </div>
-          <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">
-            Sistema de Upload N8N
-          </h3>
-        </div>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          Faça upload de arquivos PDF, DOCX e planilhas com nossa tecnologia de automação avançada
-        </p>
-      </div>
-
-      {/* Hidden file input */}
-      <input
-        ref={fileInputRef}
-        type="file"
-        multiple
-        accept=".pdf,.doc,.docx,.xls,.xlsx"
-        onChange={handleInputChange}
-        className="hidden"
-      />
-
-      {/* Drag & Drop Zone */}
-      <DragDropZone 
-        onFilesSelected={handleFileSelect}
-        uploading={uploading}
-      />
-
-      {/* Upload Button */}
-      <div className="flex justify-center">
-        <Button
-          onClick={() => fileInputRef.current?.click()}
-          disabled={uploading}
-          className={cn(
-            "px-8 py-4 text-lg font-semibold rounded-2xl",
-            "bg-gradient-to-r from-neon-green to-neon-blue",
-            "hover:from-neon-green/80 hover:to-neon-blue/80",
-            "shadow-[0_0_20px_rgba(34,197,94,0.3)]",
-            "hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]",
-            "transition-all duration-300 hover:scale-105",
-            "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-          )}
-        >
-          <Upload className="h-5 w-5 mr-3" />
-          {uploading ? 'Enviando...' : 'Selecionar Arquivos'}
-        </Button>
-      </div>
-
-      {/* Progress Bar */}
-      {uploading && (
-        <div className="space-y-4">
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-300 font-medium">Enviando arquivo...</span>
-            <span className="text-neon-green font-bold">{Math.round(uploadProgress)}%</span>
-          </div>
-          <div className="relative">
-            <Progress 
-              value={uploadProgress} 
-              className={cn(
-                "h-3 bg-gray-800/50 border border-gray-700/30 rounded-full overflow-hidden",
-                "shadow-inner"
-              )}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-neon-green/20 to-neon-blue/20 rounded-full animate-pulse"></div>
-          </div>
-        </div>
-      )}
-
-      {/* Files List */}
-      {uploadedFiles.length > 0 && (
-        <div className="space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center">
-              <CheckCircle className="w-4 h-4 text-white" />
-            </div>
-            <h4 className="text-xl font-bold text-gray-100">
-              Arquivos Enviados ({uploadedFiles.length})
-            </h4>
-          </div>
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black overflow-hidden">
+      <FloatingParticles />
+      
+      {/* Hero Section */}
+      <div className="relative z-10 container-section mx-auto pt-32 pb-20">
+        <div className="text-center mb-16">
+          <Badge className="mb-6 bg-gradient-to-r from-neon-green to-neon-blue text-white border-none px-6 py-2 text-sm font-medium">
+            🤖 Automação Inteligente
+          </Badge>
           
-          <div className="grid gap-4">
-            {uploadedFiles.map((file, index) => (
-              <div
-                key={file.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <FileCard file={file} onDelete={deleteFile} />
-              </div>
-            ))}
-          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+            Upload de Arquivos
+            <span className="block bg-gradient-to-r from-neon-green via-neon-blue to-neon-purple bg-clip-text text-transparent">
+              N8N Integration
+            </span>
+          </h1>
+          
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Faça upload dos seus arquivos e deixe nossa IA processar automaticamente usando fluxos N8N personalizados.
+          </p>
         </div>
-      )}
 
-      {/* Empty State */}
-      {uploadedFiles.length === 0 && !uploading && (
-        <Alert className="bg-gray-800/30 border-gray-700/30 backdrop-blur-xl">
-          <AlertCircle className="h-4 w-4 text-gray-400" />
-          <AlertDescription className="text-gray-400">
-            Nenhum arquivo foi enviado ainda. Use a área de upload acima para começar.
-          </AlertDescription>
-        </Alert>
-      )}
-    </div>
+        {/* Main Upload Area */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          <Card className="bg-gradient-to-br from-gray-800/50 to-gray-900/30 backdrop-blur-xl border-gray-700/30 shadow-2xl">
+            <CardHeader className="text-center space-y-2">
+              <CardTitle className="text-2xl text-white">Área de Upload</CardTitle>
+              <CardDescription className="text-gray-400">
+                Arraste seus arquivos ou clique para selecionar
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-8">
+              <DragDropZone onFilesSelected={handleFilesSelected} uploading={uploading} />
+              
+              {uploading && (
+                <div className="mt-6 space-y-2">
+                  <div className="flex justify-between text-sm text-gray-400">
+                    <span>Enviando arquivo...</span>
+                    <span>{uploadProgress}%</span>
+                  </div>
+                  <Progress 
+                    value={uploadProgress} 
+                    className="h-2 bg-gray-700/50"
+                  />
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Files List */}
+          {files.length > 0 && (
+            <Card className="bg-gradient-to-br from-gray-800/50 to-gray-900/30 backdrop-blur-xl border-gray-700/30 shadow-2xl">
+              <CardHeader>
+                <CardTitle className="text-xl text-white flex items-center gap-2">
+                  📁 Arquivos Enviados ({files.length})
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="grid gap-4">
+                  {files.map((file) => (
+                    <FileCard
+                      key={file.id}
+                      file={file}
+                      onDelete={handleFileDelete}
+                    />
+                  ))}
+                </div>
+                
+                <div className="mt-6 pt-6 border-t border-gray-700/30">
+                  <Button
+                    onClick={handleProcessFiles}
+                    disabled={uploading}
+                    className={cn(
+                      "w-full h-14 text-lg font-semibold",
+                      "bg-gradient-to-r from-neon-green to-neon-blue",
+                      "hover:from-neon-green/80 hover:to-neon-blue/80",
+                      "hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]",
+                      "transition-all duration-300",
+                      "disabled:opacity-50 disabled:cursor-not-allowed"
+                    )}
+                  >
+                    {uploading ? (
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Processando...
+                      </div>
+                    ) : (
+                      "⚡ Processar com N8N"
+                    )}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </div>
+    </section>
   );
 };
 
