@@ -55,7 +55,7 @@ const Academy = () => {
         {/* Admin Links */}
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold text-white mb-8">Área Administrativa</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <Card className="glass-effect border-0 hover:scale-105 transition-transform duration-300">
               <CardHeader>
                 <CardTitle className="text-white">Convidar Usuários</CardTitle>
@@ -84,6 +84,23 @@ const Academy = () => {
                 <Button 
                   className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500"
                   onClick={() => window.location.href = '/admin/gerenciar-acessos'}
+                >
+                  Acessar
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-effect border-0 hover:scale-105 transition-transform duration-300">
+              <CardHeader>
+                <CardTitle className="text-white">Gerenciar Cursos</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Administre cursos, módulos e aulas da plataforma
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button 
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500"
+                  onClick={() => window.location.href = '/admin/gerenciar-cursos'}
                 >
                   Acessar
                 </Button>
