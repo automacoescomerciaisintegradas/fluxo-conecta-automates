@@ -8,6 +8,9 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
+import Academy from "./pages/Academy";
+import ConvidarUsuarios from "./pages/admin/ConvidarUsuarios";
+import GerenciarAcessos from "./pages/admin/GerenciarAcessos";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
@@ -25,6 +28,9 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/academy" element={<Academy />} />
+              <Route path="/admin/convidar-usuarios" element={<ConvidarUsuarios />} />
+              <Route path="/admin/gerenciar-acessos" element={<GerenciarAcessos />} />
               <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
               <Route path="/termos-de-uso" element={<TermsOfUse />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
