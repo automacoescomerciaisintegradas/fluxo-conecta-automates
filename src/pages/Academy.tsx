@@ -2,6 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Users, BookOpen, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Academy = () => {
   return (
@@ -55,7 +56,7 @@ const Academy = () => {
         {/* Admin Links */}
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold text-white mb-8">Área Administrativa</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <Card className="glass-effect border-0 hover:scale-105 transition-transform duration-300">
               <CardHeader>
                 <CardTitle className="text-white">Convidar Usuários</CardTitle>
@@ -64,12 +65,11 @@ const Academy = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button 
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500"
-                  onClick={() => window.location.href = '/admin/convidar-usuarios'}
-                >
-                  Acessar
-                </Button>
+                <Link to="/admin/convidar-usuarios">
+                  <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500">
+                    Acessar
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -81,12 +81,11 @@ const Academy = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button 
-                  className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500"
-                  onClick={() => window.location.href = '/admin/gerenciar-acessos'}
-                >
-                  Acessar
-                </Button>
+                <Link to="/admin/gerenciar-acessos">
+                  <Button className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500">
+                    Acessar
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -98,12 +97,11 @@ const Academy = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button 
-                  className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500"
-                  onClick={() => window.location.href = '/admin/gerenciar-cursos'}
-                >
-                  Acessar
-                </Button>
+                <Link to="/admin/gerenciar-cursos">
+                  <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500">
+                    Acessar
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
