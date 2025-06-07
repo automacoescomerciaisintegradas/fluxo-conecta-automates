@@ -1,6 +1,8 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
+import { useAuth } from "@/hooks/useAuth";
 import ThemeToggle from "./ThemeToggle";
 import AuthButton from "./AuthButton";
 
