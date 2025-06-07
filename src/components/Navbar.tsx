@@ -71,6 +71,16 @@ export const Navbar = () => {
                 ${theme === 'dark' ? 'bg-neon-blue' : 'bg-automation-green'}
               `}></span>
             </a>
+            <a href="/academy" className={`
+              transition-all duration-300 hover:scale-105 relative group
+              ${theme === 'dark' ? 'text-gray-300 hover:text-neon-purple' : 'text-gray-700 hover:text-automation-green'}
+            `}>
+              Academy
+              <span className={`
+                absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full
+                ${theme === 'dark' ? 'bg-neon-purple' : 'bg-automation-green'}
+              `}></span>
+            </a>
             <a href="#benefits" className={`
               transition-all duration-300 hover:scale-105 relative group
               ${theme === 'dark' ? 'text-gray-300 hover:text-neon-purple' : 'text-gray-700 hover:text-automation-green'}
