@@ -9,278 +9,29 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      agendamentos: {
-        Row: {
-          created_at: string | null
-          data_hora_fim: string
-          data_hora_inicio: string
-          id: string
-          observacoes: string | null
-          paciente_id: string | null
-          profissional_id: string | null
-          servico_id: string | null
-          status: string
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          data_hora_fim: string
-          data_hora_inicio: string
-          id?: string
-          observacoes?: string | null
-          paciente_id?: string | null
-          profissional_id?: string | null
-          servico_id?: string | null
-          status?: string
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          data_hora_fim?: string
-          data_hora_inicio?: string
-          id?: string
-          observacoes?: string | null
-          paciente_id?: string | null
-          profissional_id?: string | null
-          servico_id?: string | null
-          status?: string
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "agendamentos_paciente_id_fkey"
-            columns: ["paciente_id"]
-            isOneToOne: false
-            referencedRelation: "pacientes"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "agendamentos_profissional_id_fkey"
-            columns: ["profissional_id"]
-            isOneToOne: false
-            referencedRelation: "profissionais"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "agendamentos_servico_id_fkey"
-            columns: ["servico_id"]
-            isOneToOne: false
-            referencedRelation: "servicos"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      bloqueios_horario: {
-        Row: {
-          created_at: string | null
-          data_fim: string
-          data_inicio: string
-          id: string
-          motivo: string | null
-          profissional_id: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          data_fim: string
-          data_inicio: string
-          id?: string
-          motivo?: string | null
-          profissional_id?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          data_fim?: string
-          data_inicio?: string
-          id?: string
-          motivo?: string | null
-          profissional_id?: string | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "bloqueios_horario_profissional_id_fkey"
-            columns: ["profissional_id"]
-            isOneToOne: false
-            referencedRelation: "profissionais"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      courses: {
+      LEADS: {
         Row: {
           created_at: string
-          description: string | null
-          duration_hours: number | null
-          id: string
-          is_published: boolean | null
-          level: string | null
-          price: number | null
-          thumbnail_url: string | null
-          title: string
-          updated_at: string
+          id: number
+          NOME: string | null
+          NUMERO: number | null
+          STATUS: string | null
         }
         Insert: {
           created_at?: string
-          description?: string | null
-          duration_hours?: number | null
-          id?: string
-          is_published?: boolean | null
-          level?: string | null
-          price?: number | null
-          thumbnail_url?: string | null
-          title: string
-          updated_at?: string
+          id?: number
+          NOME?: string | null
+          NUMERO?: number | null
+          STATUS?: string | null
         }
         Update: {
           created_at?: string
-          description?: string | null
-          duration_hours?: number | null
-          id?: string
-          is_published?: boolean | null
-          level?: string | null
-          price?: number | null
-          thumbnail_url?: string | null
-          title?: string
-          updated_at?: string
+          id?: number
+          NOME?: string | null
+          NUMERO?: number | null
+          STATUS?: string | null
         }
         Relationships: []
-      }
-      disponibilidade: {
-        Row: {
-          created_at: string | null
-          dia_semana: number
-          hora_fim: string
-          hora_inicio: string
-          id: string
-          profissional_id: string | null
-          recorrente: boolean | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          dia_semana: number
-          hora_fim: string
-          hora_inicio: string
-          id?: string
-          profissional_id?: string | null
-          recorrente?: boolean | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          dia_semana?: number
-          hora_fim?: string
-          hora_inicio?: string
-          id?: string
-          profissional_id?: string | null
-          recorrente?: boolean | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "disponibilidade_profissional_id_fkey"
-            columns: ["profissional_id"]
-            isOneToOne: false
-            referencedRelation: "profissionais"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      historico_agendamentos: {
-        Row: {
-          agendamento_id: string | null
-          alterado_por: string | null
-          created_at: string | null
-          data_hora_anterior: string | null
-          data_hora_nova: string | null
-          id: string
-          motivo: string | null
-          status_anterior: string | null
-          status_novo: string
-        }
-        Insert: {
-          agendamento_id?: string | null
-          alterado_por?: string | null
-          created_at?: string | null
-          data_hora_anterior?: string | null
-          data_hora_nova?: string | null
-          id?: string
-          motivo?: string | null
-          status_anterior?: string | null
-          status_novo: string
-        }
-        Update: {
-          agendamento_id?: string | null
-          alterado_por?: string | null
-          created_at?: string | null
-          data_hora_anterior?: string | null
-          data_hora_nova?: string | null
-          id?: string
-          motivo?: string | null
-          status_anterior?: string | null
-          status_novo?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "historico_agendamentos_agendamento_id_fkey"
-            columns: ["agendamento_id"]
-            isOneToOne: false
-            referencedRelation: "agendamentos"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      lessons: {
-        Row: {
-          content: string | null
-          created_at: string
-          description: string | null
-          duration_minutes: number | null
-          id: string
-          is_published: boolean | null
-          module_id: string
-          order_index: number
-          title: string
-          updated_at: string
-          video_url: string | null
-        }
-        Insert: {
-          content?: string | null
-          created_at?: string
-          description?: string | null
-          duration_minutes?: number | null
-          id?: string
-          is_published?: boolean | null
-          module_id: string
-          order_index: number
-          title: string
-          updated_at?: string
-          video_url?: string | null
-        }
-        Update: {
-          content?: string | null
-          created_at?: string
-          description?: string | null
-          duration_minutes?: number | null
-          id?: string
-          is_published?: boolean | null
-          module_id?: string
-          order_index?: number
-          title?: string
-          updated_at?: string
-          video_url?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "lessons_module_id_fkey"
-            columns: ["module_id"]
-            isOneToOne: false
-            referencedRelation: "modules"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       message_buffer: {
         Row: {
@@ -309,242 +60,132 @@ export type Database = {
         }
         Relationships: []
       }
-      modules: {
-        Row: {
-          course_id: string
-          created_at: string
-          description: string | null
-          id: string
-          order_index: number
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          course_id: string
-          created_at?: string
-          description?: string | null
-          id?: string
-          order_index: number
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          course_id?: string
-          created_at?: string
-          description?: string | null
-          id?: string
-          order_index?: number
-          title?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "modules_course_id_fkey"
-            columns: ["course_id"]
-            isOneToOne: false
-            referencedRelation: "courses"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      notes: {
-        Row: {
-          content: string | null
-          created_at: string
-          id: string
-          title: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          content?: string | null
-          created_at?: string
-          id?: string
-          title: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          content?: string | null
-          created_at?: string
-          id?: string
-          title?: string
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
-      pacientes: {
-        Row: {
-          cpf: string
-          created_at: string | null
-          data_nascimento: string | null
-          email: string | null
-          endereco: string | null
-          id: string
-          nome: string
-          observacoes: string | null
-          telefone: string
-          updated_at: string | null
-        }
-        Insert: {
-          cpf: string
-          created_at?: string | null
-          data_nascimento?: string | null
-          email?: string | null
-          endereco?: string | null
-          id?: string
-          nome: string
-          observacoes?: string | null
-          telefone: string
-          updated_at?: string | null
-        }
-        Update: {
-          cpf?: string
-          created_at?: string | null
-          data_nascimento?: string | null
-          email?: string | null
-          endereco?: string | null
-          id?: string
-          nome?: string
-          observacoes?: string | null
-          telefone?: string
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
       profiles: {
         Row: {
           avatar_url: string | null
           created_at: string
-          email: string | null
+          full_name: string | null
           id: string
-          name: string | null
-          provider: string | null
           updated_at: string
+          username: string | null
         }
         Insert: {
           avatar_url?: string | null
           created_at?: string
-          email?: string | null
+          full_name?: string | null
           id: string
-          name?: string | null
-          provider?: string | null
           updated_at?: string
+          username?: string | null
         }
         Update: {
           avatar_url?: string | null
           created_at?: string
-          email?: string | null
+          full_name?: string | null
           id?: string
-          name?: string | null
-          provider?: string | null
           updated_at?: string
+          username?: string | null
         }
         Relationships: []
       }
-      profissionais: {
+      scenes: {
         Row: {
+          ai_image_prompt: string
           created_at: string | null
-          email: string | null
-          especialidade: string
-          horario_fim: string | null
-          horario_inicio: string | null
-          id: string
-          nome: string
-          registro_profissional: string | null
-          status: string | null
-          telefone: string | null
-          updated_at: string | null
+          generation_id: string | null
+          id: number
+          image_url: string | null
+          scene: string
         }
         Insert: {
+          ai_image_prompt: string
           created_at?: string | null
-          email?: string | null
-          especialidade: string
-          horario_fim?: string | null
-          horario_inicio?: string | null
-          id?: string
-          nome: string
-          registro_profissional?: string | null
-          status?: string | null
-          telefone?: string | null
-          updated_at?: string | null
+          generation_id?: string | null
+          id: number
+          image_url?: string | null
+          scene: string
         }
         Update: {
+          ai_image_prompt?: string
           created_at?: string | null
-          email?: string | null
-          especialidade?: string
-          horario_fim?: string | null
-          horario_inicio?: string | null
-          id?: string
-          nome?: string
-          registro_profissional?: string | null
-          status?: string | null
-          telefone?: string | null
-          updated_at?: string | null
+          generation_id?: string | null
+          id?: number
+          image_url?: string | null
+          scene?: string
         }
         Relationships: []
       }
-      profissionais_servicos: {
+      stories: {
         Row: {
-          profissional_id: string
-          servico_id: string
-        }
-        Insert: {
-          profissional_id: string
-          servico_id: string
-        }
-        Update: {
-          profissional_id?: string
-          servico_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "profissionais_servicos_profissional_id_fkey"
-            columns: ["profissional_id"]
-            isOneToOne: false
-            referencedRelation: "profissionais"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "profissionais_servicos_servico_id_fkey"
-            columns: ["servico_id"]
-            isOneToOne: false
-            referencedRelation: "servicos"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      servicos: {
-        Row: {
+          "aspect ratio": string
+          complete_video: string | null
           created_at: string | null
-          descricao: string | null
-          duracao: number
-          id: string
-          nome: string
-          preco: number | null
-          status: string | null
-          updated_at: string | null
+          height: number
+          id: number
+          leonardo_height: number | null
+          leonardo_width: number | null
+          prompt: string
+          script: string
+          style: string
+          width: number
         }
         Insert: {
+          "aspect ratio": string
+          complete_video?: string | null
           created_at?: string | null
-          descricao?: string | null
-          duracao: number
-          id?: string
-          nome: string
-          preco?: number | null
-          status?: string | null
-          updated_at?: string | null
+          height: number
+          id: number
+          leonardo_height?: number | null
+          leonardo_width?: number | null
+          prompt: string
+          script: string
+          style: string
+          width: number
         }
         Update: {
+          "aspect ratio"?: string
+          complete_video?: string | null
           created_at?: string | null
-          descricao?: string | null
-          duracao?: number
-          id?: string
-          nome?: string
-          preco?: number | null
-          status?: string | null
+          height?: number
+          id?: number
+          leonardo_height?: number | null
+          leonardo_width?: number | null
+          prompt?: string
+          script?: string
+          style?: string
+          width?: number
+        }
+        Relationships: []
+      }
+      video_jobs: {
+        Row: {
+          audio_url: string | null
+          created_at: string | null
+          id: number
+          merged_url: string | null
+          project_id: string
+          project_id_merged: string | null
+          updated_at: string | null
+          video_url: string | null
+        }
+        Insert: {
+          audio_url?: string | null
+          created_at?: string | null
+          id: number
+          merged_url?: string | null
+          project_id: string
+          project_id_merged?: string | null
           updated_at?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          audio_url?: string | null
+          created_at?: string | null
+          id?: number
+          merged_url?: string | null
+          project_id?: string
+          project_id_merged?: string | null
+          updated_at?: string | null
+          video_url?: string | null
         }
         Relationships: []
       }
